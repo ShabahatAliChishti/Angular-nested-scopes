@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html ng-app="Demo">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="Script.js"></script>
+</head>
+<body>
+
+    <!--<div ng-controller="countryController">
+        {{name}}
+        <div ng-controller="stateController">
+            {{name}}
+            <div ng-controller="cityController">
+                {{name}}
+            </div>
+        </div>
+    </div>-->
+    <!--output
+      India
+    Maharasta
+      Mumbai-->
+
+
+
+
+
+    <div ng-controller="countryController">
+        {{name}}
+        <div ng-controller="stateController">
+            <!--//we are using $parent to get the name property value of the immediate parent controller. To get the name property value of the grand parent, we are using $parent.$parent-->
+            {{$parent.name}} - {{name}}
+            <div ng-controller="cityController">
+                <!--//for accessing grandparent:$parent.$parent.-->
+                {{$parent.$parent.name}} - {{$parent.name}} - {{name}}
+            </div>
+        </div>
+    </div>
+    <!--output
+      India
+    India-Maharasta
+     India-Maharasta- Mumbai-->
+
+</body>
+</html>
