@@ -8,32 +8,17 @@
 </head>
 <body>
 
-    <!--<div ng-controller="countryController">
-        {{name}}
-        <div ng-controller="stateController">
-            {{name}}
-            <div ng-controller="cityController">
-                {{name}}
-            </div>
-        </div>
-    </div>-->
-    <!--output
-      India
-    Maharasta
-      Mumbai-->
+   
 
 
 
 
-
-    <div ng-controller="countryController">
-        {{name}}
-        <div ng-controller="stateController">
-            <!--//we are using $parent to get the name property value of the immediate parent controller. To get the name property value of the grand parent, we are using $parent.$parent-->
-            {{$parent.name}} - {{name}}
-            <div ng-controller="cityController">
-                <!--//for accessing grandparent:$parent.$parent.-->
-                {{$parent.$parent.name}} - {{$parent.name}} - {{name}}
+    <div ng-controller="countryController as countryCtrl">
+        {{countryCtrl.name}}
+        <div ng-controller="stateController as stateCtrl">
+            {{countryCtrl.name}} - {{stateCtrl.name}}
+            <div ng-controller="cityController as cityCtrl">
+                {{countryCtrl.name}} - {{stateCtrl.name}} - {{cityCtrl.name}}
             </div>
         </div>
     </div>
